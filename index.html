@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="cool stuff">
+    <meta name="cooolcat" content="cool stuff">
+    <title>COOL</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="hbs-issues.js"></script>
+    <script src="sheetsee.js"></script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>Projects</h1>
+
+    <h2>Project One</h2>
+    <div id="one"></div>
+
+    <h2>Project Two</h2>
+    <div id="two"></div>
+
+    <script id="one" type="text/html">
+      <table>
+        <tr><th class="tHeader">Title</th><th class="tHeader">Repo</th><th class="tHeader">Who</th><th class="tHeader">When</th></tr>
+          {{#rows}}
+          <tr ><td {{#pr}}class="pr"{{/pr}} ><a href="{{url}}">{{title}}</a></td><td><a href="http://www.github.com/github/{{parentrepo}}">{{parentrepo}}</a><td><a href="http://www.github.com/{{user.login}}">@{{user.login}}</a></td><td>{{created_at}}</td></tr>
+          {{/rows}}
+      </table>
+    </script>
+
+    <script id="two" type="text/html">
+      <table>
+        <tr><th class="tHeader">Title</th><th class="tHeader">Repo</th><th class="tHeader">Who</th><th class="tHeader">When</th></tr>
+          {{#rows}}
+          <tr ><td {{#pr}}class="pr"{{/pr}} ><a href="{{url}}">{{title}}</a></td><td><a href="http://www.github.com/github/{{parentrepo}}">{{parentrepo}}</a><td><a href="http://www.github.com/{{user.login}}">@{{user.login}}</a></td><td>{{created_at}}</td></tr>
+          {{/rows}}
+      </table>
+    </script>
+
+    <script type="text/javascript">
+      document.addEventListener('DOMContentLoaded', function() {
+
+        issues.rows.forEach(function(row) {
+          row.when = row.created_at
+          row.repo = row.parentrepo
+          row.who = row.user.login
+        })
+
+        var oneTableOpts = {
+                            "data": oneData,
+                            "pagination": 10,
+                            "tableDiv": "#one"
+                            }
+        Sheetsee.makeTable(mailTableOpts)
+
+       var twoTableOpts = {
+                            "data": twoData,
+                            "pagination": 10,
+                            "tableDiv": "#two"
+                            }
+        Sheetsee.makeTable(tutTableOpts)
+
+
+      })
+
+      var oneData = filterLabel(issues.rows, "projone")
+      var twoData = filterLabel(issyes.rows, "projtwo")
+
+      function filterLabel(issues, term) {
+        var filtered = []
+        issues.forEach(function(issue) {
+          issue.labels.forEach(function(label) {
+            if (label.name === term) {
+              filtered.push(issue)
+            }
+          })
+        })
+        return filtered
+      }
+
+  </script>
+  </body>
+</html>

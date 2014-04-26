@@ -1,0 +1,65 @@
+body { font-family: Helvetica; padding: 20px 60px; font-size: 13px; color: #333;}
+
+a {text-decoration: none; color: #fff;}
+a:hover {border-bottom: 1px solid #fff; }
+
+h1 {font-size: 300%; padding-bottom: 30px;}
+
+h1, h2, h3, h4, h5, h6 {}
+
+input {
+  border: none;
+  border-bottom: 1px solid #333;
+  margin: 10px 0px;
+  width: 200px;
+  font-size: 13px;
+  padding-bottom: 6px;
+}
+
+#Pagination {
+  border-top: 1px solid #efefef;
+  margin: 10px 0px;
+  padding-top: 10px;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 10px;
+}
+
+table {width: 100%; border-spacing: 0; text-align: left; padding: 20px 0 40px;}
+th {padding: 8px 0;}
+
+.tHeader::after {
+  content: " \2193 \2191 ";
+  font-size: 10px;
+  padding-left: 3px;
+ }
+
+.tHeader {
+  cursor: pointer;
+}
+
+td {
+  color: #fff;
+  padding: 8px 6px;
+  margin: 3px 0;
+ }
+
+ td.pr {
+  border-left: 4px solid #333;
+ }
+
+ tr:hover {
+  opacity: .75;
+ }
+
+ .no-pag {
+  display: none;
+ }
+
+.pagination-pre-proj-mail, .pagination-next-proj-mail {
+  padding: 3px 6px;
+  background-color: #009800;
+  border-radius: 2px;
+  border: none;
+  transition: background-color 0.2s ease;
+}
